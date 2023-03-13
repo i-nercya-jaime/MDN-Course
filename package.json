@@ -1,0 +1,19 @@
+{
+  "name": "mdn-course",
+  "version": "1.0.0",
+  "description": "curso mdn",
+  "main": "index.js",
+  "scripts": {
+    "start": "live-server --port=8888 --host=localhost"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i-nercya-jaime/MDN-Course.git"
+  },
+  "author": "Jaime",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/i-nercya-jaime/MDN-Course/issues"
+  },
+  "homepage": "https://github.com/i-nercya-jaime/MDN-Course#readme"
+}
