@@ -1,36 +1,58 @@
 const numeros = [2, 2, 2, 3, 3, 7, 8, 9, 10, 9, 1, 1 ];
 const numerosOrdenados = numeros.sort(function(a, b){return a - b});
-console.log(numerosOrdenados);
+
 
 //media
-const para1 = document.createElement('p');
-const media = numerosOrdenados.reduce((suma, valor) => suma + valor, 0) / numeros.length;
+function media(arr){
+  let suma = 0;
+  for (let i = 0; i < arr.length; i++){
+    suma += arr[i];
+  }
+  let media = suma / arr.length;
+  return media;
+}
 
 //numero de elementos
-const para2 = document.createElement('p');
-const numElementos = numerosOrdenados.length;
+function numElementos(arr){
+  const numElementos = arr.length;
+  return numElementos;
+}
         
 //max
-const para3 = document.createElement('p');
-const numMax = Math.max.apply(Math, numerosOrdenados);
+function numMax(arr){
+  const numMax = Math.max.apply(Math, arr);
+  return numMax;
+}
+
 
 //min
-const para4 = document.createElement('p');
-const numMin = Math.min.apply(Math, numerosOrdenados);
+function numMin(arr){
+  const numMin = Math.min.apply(Math, arr);
+  return numMin;
+}
 
 //desviación típica
-const para5 = document.createElement('p');
-const sumDifCuadrado = numeros.reduce((suma, valor) => suma + Math.pow(valor - media, 2), 0);
-const desviacionTipica = Math.sqrt(sumDifCuadrado / (numeros.length - 1));
+function desviacionTipica(arr){
+  
+  //Primero calculo la media
+    let suma = 0;
+    for (let i = 0; i < arr.length; i++){
+      suma += arr[i];
+    }
+    let media = suma / arr.length;
+  
+  const sumDifCuadrado = arr.reduce((a, b) => a + Math.pow(b - media, 2), 0);
+  const desviacionTipica = Math.sqrt(sumDifCuadrado / (arr.length - 1));
+  return desviacionTipica;
+}
+
 
 //histograma
-const para6 = document.createElement('p');
 function histograma(arr) {
-  
+ 
 }
 
 //mediana
-const para7 = document.createElement('p');
 function mediana(arr){
   let i = (arr.length) / 2;
   const mediana = ((arr[i+1] + (arr[i+2])) * 0.5);
@@ -39,7 +61,6 @@ function mediana(arr){
 
 
 //moda
-const para8 = document.createElement('p');
 function encontrarModa(arr) {
     let moda = 0;
     let maxFrecuencia = 0;
@@ -61,16 +82,24 @@ function encontrarModa(arr) {
   
 const section = document.querySelector('section');
 
-para1.textContent = `La media del array es: ${media}`;
-para2.textContent = `El número de elementos del array es: ${numElementos}`;
-para3.textContent = `El número máximo del array es: ${numMax}`;
-para4.textContent = `El número mínimo del array es: ${numMin}`;
-para5.textContent = `La desviación estándar es ${desviacionTipica.toFixed(2)}`;
+
+const para1 = document.createElement('p');
+const para2 = document.createElement('p');
+const para3 = document.createElement('p');
+const para4 = document.createElement('p');
+const para5 = document.createElement('p');
+const para6 = document.createElement('p');
+const para7 = document.createElement('p');
+const para8 = document.createElement('p');
+
+para1.textContent = `La media del array es: ${media(numerosOrdenados)}`;
+para2.textContent = `El número de elementos del array es: ${numElementos(numerosOrdenados)}`;
+para3.textContent = `El número máximo del array es: ${numMax(numerosOrdenados)}`;
+para4.textContent = `El número mínimo del array es: ${numMin(numerosOrdenados)}`;
+para5.textContent = `La desviación estándar es: ${desviacionTipica(numerosOrdenados).toFixed(2)}`;
 para6.textContent = `xx ${histograma(numerosOrdenados)}`;
-para7.textContent = `La mediana es ${mediana(numerosOrdenados)}`;
+para7.textContent = `La mediana es: ${mediana(numerosOrdenados)}`;
 para8.textContent = `La moda es: ${encontrarModa(numerosOrdenados)} `;
-
-
 
 section.appendChild(para1);
 section.appendChild(para2);
