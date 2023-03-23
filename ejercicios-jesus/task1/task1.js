@@ -1,7 +1,6 @@
 const numeros = [2, 2, 2, 3, 3, 7, 8, 9, 10, 9, 1, 1 ];
 const numerosOrdenados = numeros.sort(function(a, b){return a - b});
 
-
 //media
 function media(arr){
   let suma = 0;
