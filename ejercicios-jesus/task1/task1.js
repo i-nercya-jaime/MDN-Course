@@ -48,7 +48,25 @@ function desviacionTipica(arr){
 
 //histograma
 function histograma(arr) {
- 
+  for(let i = 0; i < arr.length; i++){
+    
+    const elemento = arr[i];
+    if(histograma[elemento]){
+      histograma[elemento]++;
+    }else{
+      histograma[elemento] = 1;
+    }
+  }
+
+  let histogramaString = '';
+  for (const elemento in histograma) {
+    if (histograma.hasOwnProperty(elemento)) {
+      const count = histograma[elemento];
+      histogramaString += `${elemento}: ${'*'.repeat(count)}\n`;
+    }
+  }
+
+  return histogramaString;
 }
 
 //mediana
@@ -57,7 +75,6 @@ function mediana(arr){
   const mediana = ((arr[i+1] + (arr[i+2])) * 0.5);
   return mediana;
 }
-
 
 //moda
 function encontrarModa(arr) {
@@ -96,7 +113,7 @@ para2.textContent = `El número de elementos del array es: ${numElementos(numero
 para3.textContent = `El número máximo del array es: ${numMax(numerosOrdenados)}`;
 para4.textContent = `El número mínimo del array es: ${numMin(numerosOrdenados)}`;
 para5.textContent = `La desviación estándar es: ${desviacionTipica(numerosOrdenados).toFixed(2)}`;
-para6.textContent = `xx ${histograma(numerosOrdenados)}`;
+para6.textContent = `El histograma es: ${histograma(numerosOrdenados)}`;
 para7.textContent = `La mediana es: ${mediana(numerosOrdenados)}`;
 para8.textContent = `La moda es: ${encontrarModa(numerosOrdenados)} `;
 
