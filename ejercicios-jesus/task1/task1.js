@@ -65,7 +65,6 @@ function histograma(arr) {
       histogramaString += `${elemento}: ${'*'.repeat(count)}\n`;
     }
   }
-
   return histogramaString;
 }
 
@@ -96,9 +95,9 @@ function encontrarModa(arr) {
     return moda;
   }
   
+
+//Pintar en HTML  
 const section = document.querySelector('section');
-
-
 const para1 = document.createElement('p');
 const para2 = document.createElement('p');
 const para3 = document.createElement('p');
