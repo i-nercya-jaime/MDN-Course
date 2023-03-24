@@ -15,8 +15,6 @@ function obtenerNumerosPrimos(n) {
         }
     }
 
-  
-    // Finalmente, retornamos un arreglo con todos los números primos menores o iguales a n.
     //Creamos el arrayPrimos, recorremos el arrayNumeros e introducimos i con push en arrayPrimos
     const arrayPrimos = [];
     for (let i = 2; i <= n; i++) {
@@ -31,4 +29,5 @@ const section = document.querySelector('section');
 const para1 = document.createElement('p');
 para1.textContent = `Los números primos de 101 son: ${obtenerNumerosPrimos(101)}`;
 section.appendChild(para1);
+
 
