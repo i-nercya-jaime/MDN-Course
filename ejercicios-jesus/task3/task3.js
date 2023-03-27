@@ -1,35 +1,58 @@
-function obtenerNumerosPrimos(n) {
-    // Creo un array de booleans con todo true excepto el 0 y el 1
-    const arrayNumeros = Array(n + 1).fill(true);    
-    arrayNumeros[0] = false;
-    arrayNumeros[1] = false;
+//eratóstenes
 
-    //Recorro el array desde el 2 hasta el numero que pasa el usuario (n)
-    for(let i = 2; i <= n; i++){
-    // Si el array es true, entonces i es primo. En este caso, marcamos todos los múltiplos de i como no primos (es decir, como false en el array).
-        if(arrayNumeros[i] == true){
-            for (let j = i * i; j <= n; j += i) {
-            arrayNumeros[j] = false;
-            }
 
-        }
-    }
+const isPrime = (n) => {
+  for(let i = 2; i <= n/2; i++){
+     if(n % i === 0){
+        return false;
+     }
+  };
+  return true;
+};
+const generatePrime = num => {
+  const arr = [];
+  let i = 2;
+  while(arr.length < num){
+     if(isPrime(i)){
+        arr.push(i);
+     };
+     i = i === 2 ? i+1 : i+2;
+  };
+  return arr;
+};
 
-    //Creamos el arrayPrimos, recorremos el arrayNumeros e introducimos i con push en arrayPrimos
-    const arrayPrimos = [];
-    for (let i = 2; i <= n; i++) {
-        if (arrayNumeros[i]) {
-            arrayPrimos.push(i);
-        }
+
+
+
+function esPrimo(n){
+
+  let numeros = [];
+  for (let i = 0; i <= n; i++) {
+    numeros.push(true);
+  }
+    
+  for (let i = 2; i <= Math.sqrt(n); i++) {
+    for (let j = i * i; j <= n; j += i) {
+      numeros[j] = false;
     }
-    return arrayPrimos;
+  }
+
+  let primos = [];
+  for (let i = 2; i <= n; i++) {
+    if (numeros[i]) {
+      primos.push(i);
     }
+  }
+  return primos;
+}
 
 
 //Pintar en HTML
+{
 const section = document.querySelector('section');
 const para1 = document.createElement('p');
-para1.textContent = `Los números primos de 101 son: ${obtenerNumerosPrimos(101)}`;
+para1.textContent = `Los primeros X numeros primos son: ${generatePrime(5)}`;
 section.appendChild(para1);
+}
 
 

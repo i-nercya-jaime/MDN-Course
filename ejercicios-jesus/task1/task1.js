@@ -1,4 +1,4 @@
-const numeros = [2, 2, 2, 3, 3, 7, 8, 9, 10, 9, 1, 1 ];
+const numeros = [2, 2, 2, 3, 3, 7, 8, 9, 15, 17, 25, 19, 9, 1, 1 ];
 const numerosOrdenados = numeros.sort(function(a, b){return a - b});
 
 //media
@@ -23,6 +23,25 @@ function numMax(arr){
   return numMax;
 }
 
+//moda
+function encontrarModa(arr) {
+  let moda = 0;
+  let maxFrecuencia = 0;
+  
+  for (let i = 0; i < arr.length; i++) {
+    let frecuencia = 0;
+    for (let j = 0; j < arr.length; j++) {
+      if (arr[i] === arr[j]) {
+        frecuencia++;
+      }
+    }
+    if (frecuencia > maxFrecuencia) {
+      maxFrecuencia = frecuencia;
+      moda = arr[i];
+    }
+  }
+  return moda;
+}
 
 //min
 function numMin(arr){
@@ -44,7 +63,6 @@ function desviacionTipica(arr){
   const desviacionTipica = Math.sqrt(sumDifCuadrado / (arr.length - 1));
   return desviacionTipica;
 }
-
 
 //histograma
 function histograma(arr) {
@@ -68,32 +86,21 @@ function histograma(arr) {
   return histogramaString;
 }
 
-//mediana
-function mediana(arr){
-  let i = (arr.length) / 2;
-  const mediana = ((arr[i+1] + (arr[i+2])) * 0.5);
+/*mediana
+comprobar si el array es par o impar
+*/
+function calcularMediana(array){
+  let mediana;
+  let mitad = Math.floor(array.length / 2);
+  if(array.length % 2 !== 0){
+    mediana = array[mitad];
+  } else{
+    mediana = (array[mitad-1] + array[mitad] / 2);
+  }
   return mediana;
 }
 
-//moda
-function encontrarModa(arr) {
-    let moda = 0;
-    let maxFrecuencia = 0;
-    
-    for (let i = 0; i < arr.length; i++) {
-      let frecuencia = 0;
-      for (let j = 0; j < arr.length; j++) {
-        if (arr[i] === arr[j]) {
-          frecuencia++;
-        }
-      }
-      if (frecuencia > maxFrecuencia) {
-        maxFrecuencia = frecuencia;
-        moda = arr[i];
-      }
-    }
-    return moda;
-  }
+
   
 
 //Pintar en HTML  
@@ -107,13 +114,13 @@ const para6 = document.createElement('p');
 const para7 = document.createElement('p');
 const para8 = document.createElement('p');
 
-para1.textContent = `La media del array es: ${media(numerosOrdenados)}`;
+para1.textContent = `La media del array es: ${media(numerosOrdenados).toFixed(2)}`;
 para2.textContent = `El número de elementos del array es: ${numElementos(numerosOrdenados)}`;
 para3.textContent = `El número máximo del array es: ${numMax(numerosOrdenados)}`;
 para4.textContent = `El número mínimo del array es: ${numMin(numerosOrdenados)}`;
 para5.textContent = `La desviación estándar es: ${desviacionTipica(numerosOrdenados).toFixed(2)}`;
 para6.textContent = `El histograma es: ${histograma(numerosOrdenados)}`;
-para7.textContent = `La mediana es: ${mediana(numerosOrdenados)}`;
+para7.textContent = `La mediana es: ${calcularMediana(numerosOrdenados)}`;
 para8.textContent = `La moda es: ${encontrarModa(numerosOrdenados)} `;
 
 section.appendChild(para1);
