@@ -28,16 +28,6 @@ function mergeOrderedArrays(arr1, arr2) {
   return mergedArr;
 }
 
-
-
-  
-/*
-function juntarArrays(arr1, arr2){
-    const juntar = [].concat(arr1, arr2).sort(function(a, b){return a - b});
-    return juntar;
-}
-*/
-
 //Pintar en HTML
 const section = document.querySelector('section');
 const para1 = document.createElement('p');
