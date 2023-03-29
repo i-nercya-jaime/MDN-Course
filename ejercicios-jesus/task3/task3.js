@@ -1,57 +1,39 @@
 //eratóstenes
 
-
-const isPrime = (n) => {
-  for(let i = 2; i <= n/2; i++){
-     if(n % i === 0){
-        return false;
-     }
-  };
-  return true;
-};
-const generatePrime = num => {
-  const arr = [];
-  let i = 2;
-  while(arr.length < num){
-     if(isPrime(i)){
-        arr.push(i);
-     };
-     i = i === 2 ? i+1 : i+2;
-  };
-  return arr;
-};
-
-
-
-
-function esPrimo(n){
-
-  let numeros = [];
-  for (let i = 0; i <= n; i++) {
-    numeros.push(true);
-  }
-    
-  for (let i = 2; i <= Math.sqrt(n); i++) {
-    for (let j = i * i; j <= n; j += i) {
-      numeros[j] = false;
+function esPrimo(primosHastaAhora, n) {
+  // n es primo si no es divisible por ningún primo en primosHastaAhora
+  // menor o igual a su raíz cuadrada
+  const r = Math.sqrt(n);
+  for (let i = 0; i < primosHastaAhora.length; i++) {
+    if (n % primosHastaAhora[i] === 0) {
+      return false;
+    }
+  if (primosHastaAhora[i] > r) {
+    break;
     }
   }
-
-  let primos = [];
-  for (let i = 2; i <= n; i++) {
-    if (numeros[i]) {
+  return true;
+}
+  
+function primerosPrimos(n) {
+  const primos = [2];
+  console.log(primos);
+  let i = 3;
+  
+  while (primos.length < n) {
+    if (esPrimo(primos, i)) {
       primos.push(i);
     }
+    i++;
   }
   return primos;
 }
-
 
 //Pintar en HTML
 {
 const section = document.querySelector('section');
 const para1 = document.createElement('p');
-para1.textContent = `Los primeros X numeros primos son: ${generatePrime(5)}`;
+para1.textContent = `Los primeros 10 numeros primos son: ${primerosPrimos(10)}`;
 section.appendChild(para1);
 }
 
