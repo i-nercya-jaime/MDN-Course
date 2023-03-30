@@ -31,5 +31,3 @@ const para1 = document.createElement('p');
 para1.textContent = `El número X ha sido encontrado en la posición: ${busquedaBinaria(arrayOrdenado, 27)}`;
 section.appendChild(para1);
 }
-
-
