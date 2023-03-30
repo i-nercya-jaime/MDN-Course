@@ -24,8 +24,6 @@ function busquedaBinaria(array, objetivo){
     return "Este numero no existe en el array";
 }
 
-
-
 //Pintar en HTML
 {
 const section = document.querySelector('section');

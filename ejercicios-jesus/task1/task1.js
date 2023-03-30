@@ -100,9 +100,6 @@ function calcularMediana(array){
   return mediana;
 }
 
-
-  
-
 //Pintar en HTML  
 const section = document.querySelector('section');
 const para1 = document.createElement('p');
